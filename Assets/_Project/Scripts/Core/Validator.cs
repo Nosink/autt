@@ -11,7 +11,8 @@ public static class Validator {
         return Regex.IsMatch(email, pattern);
     }
 
-    public static bool IsPasswordEmpty(string password) {
-        return string.IsNullOrWhiteSpace(password);
+    public static bool IsValidPassword(string password) {
+        return !string.IsNullOrWhiteSpace(password);
     }
+
 }
