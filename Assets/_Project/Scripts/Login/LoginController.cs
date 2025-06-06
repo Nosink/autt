@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class LoginController {
 
-    private AuthService authService;
+    private AuthService mAuthService;
 
     public LoginController() {
-        authService = new AuthService();
+        mAuthService = new AuthService();
     }
 
     public void HandleLogin(string email, string password) {
         if (!Validator.IsValidEmail(email))
             return;
 
-        authService.Login(email, password, OnLoginSuccess);
+        mAuthService.Login(email, password, OnLoginSuccess);
     }
 
     private void OnLoginSuccess() {

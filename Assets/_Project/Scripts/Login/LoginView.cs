@@ -5,37 +5,37 @@ using UnityEngine.UI;
 public class LoginView : MonoBehaviour {
 
     [SerializeField]
-    private TMP_InputField emailInput;
+    private TMP_InputField mEmailInput;
     [SerializeField]
-    private TMP_InputField passwordInput;
+    private TMP_InputField mPasswordInput;
     [SerializeField]
-    private TMP_Text errorText;
+    private TMP_Text mErrorText;
     [SerializeField]
-    private Button loginButton;
+    private Button mLoginButton;
 
-    private LoginController controller;
+    private LoginController mController;
 
     private void Awake() {
-        controller = new LoginController();
+        mController = new LoginController();
 
-        loginButton.onClick.AddListener(OnLoginClicked);
-        emailInput.onDeselect.AddListener(OnDeselectEmailInput);
+        mLoginButton.onClick.AddListener(OnLoginClicked);
+        mEmailInput.onDeselect.AddListener(OnDeselectEmailInput);
     }
 
     private void OnLoginClicked() {
 
-        bool validEmail = Validator.IsValidEmail(emailInput.text);
-        bool validPassword = Validator.IsValidPassword(passwordInput.text);
+        bool lValidEmail = Validator.IsValidEmail(mEmailInput.text);
+        bool lValidPassword = Validator.IsValidPassword(mPasswordInput.text);
 
-        if (!(validEmail && validPassword)) {
-            errorText.text = "E-mail or Password incorrect.";
+        if (!(lValidEmail && lValidPassword)) {
+            mErrorText.text = "E-mail or Password incorrect.";
         } else {
-            controller.HandleLogin(emailInput.text, passwordInput.text);
+            mController.HandleLogin(mEmailInput.text, mPasswordInput.text);
         }
     }
 
     private void OnDeselectEmailInput(string email) {
-        errorText.text = Validator.IsValidEmail(email) ? "" : "E-mail not valid.";
+        mErrorText.text = Validator.IsValidEmail(email) ? "" : "E-mail not valid.";
     }
 
 }
