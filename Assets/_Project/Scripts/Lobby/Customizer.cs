@@ -4,30 +4,49 @@ using UnityEngine;
 
 public class Customizer : MonoBehaviour {
 
-    private int index;
-    private Transform[] items;
+    private int mIndex;
+    private Transform[] mCustomizables;
 
+    [SerializeField]
+    private CustomizablePart mCustomizablePart;
+
+    // Find and disable all child elements except the 
+    // first one, way to keep and track all customizables items
     void Start() {
-        index = 0;
-        items = new Transform[transform.childCount];
+        mIndex = 0;
+        mCustomizables = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++) {
             Transform child = transform.GetChild(i);
-            items[i] = child;
-            child.gameObject.SetActive(i == index);
+            mCustomizables[i] = child;
+            child.gameObject.SetActive(i == mIndex);
         }
     }
 
-    public void Increase() {
-        ToggleItem(index, (index + 1) % items.Length);
-    }
-    public void Decrease() {
-        ToggleItem(index, (index - 1 + items.Length) % items.Length);
+    public void SetCustomization(int index, CustomizablePart part) {
+        mCustomizablePart = part;
+        SetCustomizableIndex(index);
     }
 
-    public void ToggleItem(int previous, int next) {
-        index = next;
-        items[previous].gameObject.SetActive(false);
-        items[next].gameObject.SetActive(true);
+    public void SetCustomizableIndex(int index) {
+        ToggleItem(mIndex, index);
+    }
+
+    public void NextCustomizable() {
+        SetCustomizableIndex((mIndex + 1) % mCustomizables.Length);
+    }
+
+    public void PreviousCustomizable() {
+        SetCustomizableIndex((mIndex - 1 + mCustomizables.Length) % mCustomizables.Length);
+    }
+
+    private void ToggleItem(int previous, int next) {
+        mIndex = next;
+        mCustomizables[previous].gameObject.SetActive(false);
+        mCustomizables[next].gameObject.SetActive(true);
+    }
+
+    public Customization GetCustomization() {
+        return new Customization(mIndex, mCustomizablePart);
     }
 
 }

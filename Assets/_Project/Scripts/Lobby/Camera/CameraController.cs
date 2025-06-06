@@ -4,32 +4,27 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     [SerializeField]
-    private Transform upperPosition;
-    [SerializeField]
-    private Transform lowerPosition;
-    [SerializeField]
-    private float transitionSpeed = 2f;
+    private float mTransitionSpeed = 2f;
 
-    private Coroutine moveRoutine;
+    private Coroutine mMoveCoro = null;
 
-    public void SetTargetPosition(Transform target) {
-        if (moveRoutine != null)
-            StopCoroutine(moveRoutine);
-        moveRoutine = StartCoroutine(MoveCamera(target));
+    public void MoveTo(Transform target) {
+        if (mMoveCoro != null)
+            StopCoroutine(mMoveCoro);
+        mMoveCoro = StartCoroutine(Move(target));
     }
 
-    private IEnumerator MoveCamera(Transform target) {
-        float threshold = 0.001f;
+    private IEnumerator Move(Transform target) {
+        float lThreshold = 0.001f;
 
-        while (Vector3.Distance(transform.position, target.position) > threshold) {
-            float step = Time.deltaTime * transitionSpeed;
+        while (Vector3.Distance(transform.position, target.position) > lThreshold) {
+            float step = Time.deltaTime * mTransitionSpeed;
 
             transform.position = Vector3.Lerp(transform.position, target.position, step);
 
             yield return null;
         }
 
-        transform.position = target.position;
     }
 
 }

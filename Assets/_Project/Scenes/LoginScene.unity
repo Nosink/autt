@@ -504,7 +504,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -760,10 +760,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f21ddffed9a4f14095b5372e8b165ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emailInput: {fileID: 1579664090}
-  passwordInput: {fileID: 1167566825}
-  errorText: {fileID: 1774497466}
-  loginButton: {fileID: 1765898368}
+  mEmailInput: {fileID: 1579664090}
+  mPasswordInput: {fileID: 1167566825}
+  mErrorText: {fileID: 1774497466}
+  mLoginButton: {fileID: 1765898368}
 --- !u!1 &733716171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7359d34957d18e3448537bef7277f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 975921208}
+  mIcon: {fileID: 975921208}
 --- !u!1 &1200441401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7359d34957d18e3448537bef7277f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 1930615588}
+  mIcon: {fileID: 1930615588}
 --- !u!1 &1585785081
 GameObject:
   m_ObjectHideFlags: 0

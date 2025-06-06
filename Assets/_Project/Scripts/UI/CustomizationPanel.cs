@@ -4,30 +4,28 @@ using UnityEngine.UI;
 
 public class CustomizationPanel : MonoBehaviour, IPointerEnterHandler {
 
-    [SerializeField]
-    private Transform targetCameraPosition;
+    [Header("Camera"), SerializeField]
+    private CameraController mCameraController;
 
     [SerializeField]
-    private LobbyView view;
+    private Transform mTargetCameraPosition;
 
-    [SerializeField]
-    private Customizer customizer;
+    [Header("Customization"), SerializeField]
+    private Customizer mCustomizer;
 
+    [Header("Controller Buttons"), SerializeField]
+    private Button mNext;
     [SerializeField]
-    private Button increaseButton;
-    [SerializeField]
-    private Button decreaseButton;
-
-    [SerializeField]
-    private CustomizablePart customizablePart;
+    private Button mPrevious;
 
     void Start() {
-        increaseButton.onClick.AddListener(customizer.Increase);
-        decreaseButton.onClick.AddListener(customizer.Decrease);
+        mNext.onClick.AddListener(mCustomizer.NextCustomizable);
+        mPrevious.onClick.AddListener(mCustomizer.PreviousCustomizable);
     }
 
     public void OnPointerEnter(PointerEventData _) {
-        view.SetCameraTargetPosition(targetCameraPosition);
+        mCameraController.MoveTo(mTargetCameraPosition);
     }
+
 
 }
