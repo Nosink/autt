@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class LoginController {
 
     private AuthService mAuthService;
@@ -16,8 +14,7 @@ public class LoginController {
     }
 
     private void OnLoginSuccess() {
-        Debug.Log("Login Success");
-        // TODO: Parte 2
+        GameManager.Instance.LoadLobbyScene();
     }
 
 }
