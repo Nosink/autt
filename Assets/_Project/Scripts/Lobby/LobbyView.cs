@@ -14,7 +14,7 @@ public class LobbyView : MonoBehaviour {
     private Transform mLowerPosition;
 
     [SerializeField, Header("Customization Panel")]
-    private GameObject mUICustomizationPanelPrefab;
+    private AssetReference mUICustomizationPanelPrefab;
 
     [SerializeField, Header("Load Game Button")]
     private Button mLoadLobbySceneButton;

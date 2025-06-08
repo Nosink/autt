@@ -11,22 +11,16 @@ public class GameView : MonoBehaviour {
     private AudioSlider mAudioSlider;
 
     [SerializeField, Header("PopUp Panel")]
-    private Transform mPanel;
+    private PopUpPanel mPanel;
     [SerializeField]
     private Button mReturnToLobbyButton;
 
     void Start() {
-        mPanel.gameObject.SetActive(false);
-
         mPlayButton.GetComponent<Button>().onClick.AddListener(OnClickPlayButton);
         mReturnToLobbyButton.onClick.AddListener(() => GameManager.Instance.LoadLobbyScene());
 
-        AudioController.OnAudioEnd += DisplayPopUpPanel;
+        AudioController.OnAudioEnd += () => mPanel.Show();
         AudioController.OnAudioEnd += mPlayButton.SetPlaySprite;
-    }
-
-    private void DisplayPopUpPanel() {
-        mPanel.gameObject.SetActive(true);
     }
 
     public void OnClickPlayButton() {
@@ -36,7 +30,6 @@ public class GameView : MonoBehaviour {
         } else {
             mAudioController.Play();
             mPlayButton.SetPauseSprite();
-            mPanel.gameObject.SetActive(false);
         }
     }
 

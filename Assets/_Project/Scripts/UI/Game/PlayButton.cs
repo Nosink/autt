@@ -11,7 +11,6 @@ public class PlayButton : MonoBehaviour {
     [SerializeField]
     private Sprite mPauseSprite;
 
-
     public void SetPlaySprite() {
         mImage.sprite = mPlaySprite;
     }
