@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
-
-    /* OnSceneLoad callback */
-    public static event Action OnSceneLoaded;
 
     public static SceneLoader Instance { get; private set; }
 
@@ -45,7 +41,6 @@ public class SceneLoader : MonoBehaviour {
         while (!mAsyncOp.isDone && mAsyncOp.progress < 0.9f) {
             yield return null;
         }
-        OnSceneLoaded?.Invoke();
 
         // Start fade out animation
         mAnimator.SetTrigger("FadeOut");
