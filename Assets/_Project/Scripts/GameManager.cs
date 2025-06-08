@@ -4,10 +4,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
 
-    public Character mSceneCharacter = null;
-    private Customizer[] mCustomizer;
+    private Character mSceneCharacter;
+    private Customization[] mCustomization = null;
 
-    // Singleton to keep character information cross scenes
     void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -17,19 +16,23 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void OnSceneLoad() {
-        // Find Character
-        // Build customization
+    public void SetSceneCharacter(Character character) {
+        mSceneCharacter = character;
+        if (mCustomization != null)
+            mSceneCharacter.BuildCharacterCustomization(mCustomization);
+
     }
 
     public void LoadGameScene() {
-
-
-        Debug.Log("Load GameScene");
-        // TODO: Parte 3
-        // Find character
-        // get customization and store temporally
+        if (mSceneCharacter != null)
+            mCustomization = mSceneCharacter.GetCharacterCustomization();
+        SceneLoader.Instance.LoadSceneAsync("GameScene");
     }
 
+    public void LoadLobbyScene() {
+        if (mSceneCharacter != null)
+            mCustomization = mSceneCharacter.GetCharacterCustomization();
+        SceneLoader.Instance.LoadSceneAsync("LobbyScene");
+    }
 
 }

@@ -1,7 +1,5 @@
 using UnityEngine;
 
-
-
 public class Customizer : MonoBehaviour {
 
     private int mIndex;
@@ -12,7 +10,7 @@ public class Customizer : MonoBehaviour {
 
     // Find and disable all child elements except the 
     // first one, way to keep and track all customizables items
-    void Start() {
+    void Awake() {
         mIndex = 0;
         mCustomizables = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++) {

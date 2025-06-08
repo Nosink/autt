@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InputController : MonoBehaviour {
+public class LoginInputController : MonoBehaviour {
 
     [SerializeField]
     private Image mIcon;

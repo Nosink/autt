@@ -5,6 +5,10 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private Customizer[] mCustomizer;
 
+    void Start() {
+        GameManager.Instance.SetSceneCharacter(this);
+    }
+
     public void BuildCharacterCustomization(Customization[] customization) {
         for (int i = 0; i < customization.Length; i++)
             mCustomizer[i].SetCustomization(customization[i].index, customization[i].part);
