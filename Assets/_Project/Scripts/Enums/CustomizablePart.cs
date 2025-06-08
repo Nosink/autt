@@ -1,6 +1,6 @@
 
 public enum CustomizablePart {
-    Status, Hair, OutWear, Pants, Shoes
+    Face, Hair, OutWear, Pants, Shoes
 }
 
 public enum CustomizableZone {
