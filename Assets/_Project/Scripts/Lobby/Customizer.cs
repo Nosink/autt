@@ -7,9 +7,10 @@ public class Customizer : MonoBehaviour {
 
     [SerializeField]
     private CustomizablePart mCustomizablePart;
+    [SerializeField]
+    private CustomizableZone mZone;
+    public CustomizableZone Zone => mZone;
 
-    // Find and disable all child elements except the 
-    // first one, way to keep and track all customizables items
     void Awake() {
         mIndex = 0;
         mCustomizables = new Transform[transform.childCount];

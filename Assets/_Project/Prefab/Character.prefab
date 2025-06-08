@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCustomizablePart: 1
+  mZone: 0
 --- !u!1 &5335047644424876039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCustomizablePart: 2
+  mZone: 0
 --- !u!1 &5370308976624843215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCustomizablePart: 0
+  mZone: 0
 --- !u!1 &5789405613965724398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,6 +1590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCustomizablePart: 3
+  mZone: 1
 --- !u!1 &7019626882728268990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,6 +1669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCustomizablePart: 4
+  mZone: 1
 --- !u!1 &8129402011626743174
 GameObject:
   m_ObjectHideFlags: 0

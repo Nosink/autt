@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour {
         mSceneCharacter = character;
         if (mCustomization != null)
             mSceneCharacter.BuildCharacterCustomization(mCustomization);
-
     }
 
     public void LoadGameScene() {

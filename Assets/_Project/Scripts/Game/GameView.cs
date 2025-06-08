@@ -3,37 +3,40 @@ using UnityEngine.UI;
 
 public class GameView : MonoBehaviour {
 
+    [SerializeField, Header("Audio Controller")]
+    private AudioController mAudioController;
     [SerializeField]
     private PlayButton mPlayButton;
-
-    [SerializeField]
-    private AudioController mAudioController;
-
-    [SerializeField]
-    private Transform mPanel;
-
     [SerializeField]
     private AudioSlider mAudioSlider;
 
+    [SerializeField, Header("PopUp Panel")]
+    private Transform mPanel;
+    [SerializeField]
+    private Button mReturnToLobbyButton;
+
     void Start() {
         mPanel.gameObject.SetActive(false);
+
         mPlayButton.GetComponent<Button>().onClick.AddListener(OnClickPlayButton);
-        AudioController.OnAudioEnd += DisplayPanel;
+        mReturnToLobbyButton.onClick.AddListener(() => GameManager.Instance.LoadLobbyScene());
+
+        AudioController.OnAudioEnd += DisplayPopUpPanel;
         AudioController.OnAudioEnd += mPlayButton.SetPlaySprite;
     }
 
-    private void DisplayPanel() {
+    private void DisplayPopUpPanel() {
         mPanel.gameObject.SetActive(true);
     }
 
     public void OnClickPlayButton() {
         if (mAudioController.IsPlaying()) {
-            mPlayButton.SetPlaySprite();
             mAudioController.Puase();
+            mPlayButton.SetPlaySprite();
         } else {
+            mAudioController.Play();
             mPlayButton.SetPauseSprite();
             mPanel.gameObject.SetActive(false);
-            mAudioController.Play();
         }
     }
 

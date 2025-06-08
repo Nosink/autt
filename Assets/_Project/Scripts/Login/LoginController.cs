@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class LoginController {
 
     private AuthService mAuthService;
@@ -7,14 +9,15 @@ public class LoginController {
     }
 
     public void HandleLogin(string email, string password) {
-        if (!Validator.IsValidEmail(email))
-            return;
-
-        mAuthService.Login(email, password, OnLoginSuccess);
+        _ = mAuthService.Login(email, password, OnLoginSuccess, OnLoginFailure);
     }
 
     private void OnLoginSuccess() {
         GameManager.Instance.LoadLobbyScene();
+    }
+
+    private void OnLoginFailure(string error) {
+        Debug.LogError(error);
     }
 
 }
