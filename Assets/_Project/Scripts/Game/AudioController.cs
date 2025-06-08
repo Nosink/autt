@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour {
 
-    // Callbacks for audio ends
+    /* OnAudioEnd callback */
     public static event Action OnAudioEnd;
 
     private AudioSource mSource;
     private bool mPaused = false;
 
-    /* Unity Start */
     void Start() {
         mSource = GetComponent<AudioSource>();
     }

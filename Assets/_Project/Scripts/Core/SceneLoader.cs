@@ -5,17 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 
-    /* OnSceneLoad observer */
+    /* OnSceneLoad callback */
     public static event Action OnSceneLoaded;
 
-    /* Singleton Instance */
     public static SceneLoader Instance { get; private set; }
 
     private AsyncOperation mAsyncOp;
 
     private Animator mAnimator;
 
-    /* Unity Awake */
     void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -25,20 +23,19 @@ public class SceneLoader : MonoBehaviour {
         }
     }
 
-    /* Unity Start */
     void Start() {
         mAnimator = GetComponentInChildren<Animator>();
     }
 
     public void LoadSceneAsync(string sceneName) {
-        mAnimator.SetTrigger("fadeIn");
+        mAnimator.SetTrigger("FadeIn");
         StartCoroutine(CoroLoadSceneAsync(sceneName));
     }
 
     private IEnumerator CoroLoadSceneAsync(string sceneName) {
 
         // wait for fade in animation ends
-        while (!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("crossfade_start") ||
+        while (!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("FadeIn") ||
             mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) {
             yield return null;
         }
@@ -51,7 +48,7 @@ public class SceneLoader : MonoBehaviour {
         OnSceneLoaded?.Invoke();
 
         // Start fade out animation
-        mAnimator.SetTrigger("fadeOut");
+        mAnimator.SetTrigger("FadeOut");
     }
 
 }

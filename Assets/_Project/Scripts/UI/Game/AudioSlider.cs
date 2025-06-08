@@ -26,4 +26,5 @@ public class AudioSlider : MonoBehaviour {
         TimeSpan lTimeSpan = TimeSpan.FromSeconds(seconds);
         return $"{lTimeSpan.Minutes:00}:{lTimeSpan.Seconds:00}";
     }
+
 }

@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 public class LoginView : MonoBehaviour {
 
-    [SerializeField]
+    [SerializeField, Header("Input Fields")]
     private TMP_InputField mEmailInput;
     [SerializeField]
     private TMP_InputField mPasswordInput;
-    [SerializeField]
+
+    [SerializeField, Header("Error Handler")]
     private TMP_Text mErrorText;
-    [SerializeField]
+
+    [SerializeField, Header("Login Button")]
     private Button mLoginButton;
 
     private LoginController mController;
@@ -23,7 +25,6 @@ public class LoginView : MonoBehaviour {
     }
 
     private void OnLoginClicked() {
-
         bool lValidEmail = Validator.IsValidEmail(mEmailInput.text);
         bool lValidPassword = Validator.IsValidPassword(mPasswordInput.text);
 
